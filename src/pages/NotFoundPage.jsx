@@ -1,12 +1,14 @@
 import { Link } from 'react-router';
+import PageHeader from '../components/PageHeader.jsx';
 
 function NotFoundPage() {
   return (
-    <section>
-      <h1>Página no encontrada</h1>
-      <p>La dirección que buscas no existe.</p>
-      <Link to="/tickets">Volver a tickets</Link>
-    </section>
+    <>
+      <PageHeader title="Página no encontrada" description="La dirección que abriste no existe en esta aplicación." />
+      <Link to="/tickets" className="button button--primary">
+        Ir a tickets
+      </Link>
+    </>
   );
 }
 

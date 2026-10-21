@@ -1,5 +1,12 @@
+import PageHeader from '../components/PageHeader.jsx';
+
 function TicketsPage() {
-  return <h1>Tickets</h1>;
+  return (
+    <PageHeader
+      title="Tickets"
+      description="Consulta, registra y corrige los tickets de compra a proveedores."
+    />
+  );
 }
 
 export default TicketsPage;
