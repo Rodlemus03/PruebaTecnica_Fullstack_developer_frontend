@@ -1,0 +1,207 @@
+.receipt-frame {
+  filter: drop-shadow(0 1px 1px rgba(27, 42, 34, 0.08)) drop-shadow(0 10px 24px rgba(27, 42, 34, 0.07));
+}
+
+.receipt {
+  --notch-radius: 6px;
+  --notch-spacing: 18px;
+
+  padding: 2.5rem 2.5rem 2.75rem;
+  background: var(--color-surface);
+  -webkit-mask:
+    radial-gradient(circle var(--notch-radius) at 50% 0, transparent 98%, #000) 50% 0 / var(--notch-spacing) 51%
+      repeat-x,
+    radial-gradient(circle var(--notch-radius) at 50% 100%, transparent 98%, #000) 50% 100% / var(--notch-spacing)
+      51% repeat-x;
+  mask:
+    radial-gradient(circle var(--notch-radius) at 50% 0, transparent 98%, #000) 50% 0 / var(--notch-spacing) 51%
+      repeat-x,
+    radial-gradient(circle var(--notch-radius) at 50% 100%, transparent 98%, #000) 50% 100% / var(--notch-spacing)
+      51% repeat-x;
+}
+
+.receipt__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+
+.receipt__kicker {
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.receipt__code {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-stretch: 125%;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.receipt__date {
+  color: var(--color-ink-muted);
+}
+
+.receipt__date::first-letter {
+  text-transform: uppercase;
+}
+
+.receipt__parties {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin: 1.75rem 0 1.25rem;
+  padding: 1.25rem 0;
+  border-top: 2px dashed var(--color-line-strong);
+  border-bottom: 2px dashed var(--color-line-strong);
+}
+
+.receipt__parties dt {
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+}
+
+.receipt__parties dd {
+  margin: 0.15rem 0 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.receipt__parties dd span,
+.receipt__product-code {
+  display: block;
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+.receipt__lines-wrapper {
+  overflow-x: auto;
+}
+
+.receipt__lines {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.receipt__lines th,
+.receipt__lines td {
+  padding: 0.6rem 0 0.6rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.receipt__lines th:first-child,
+.receipt__lines td:first-child {
+  padding-left: 0;
+}
+
+.receipt__lines thead th {
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.receipt__lines .is-numeric {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.receipt__line-number {
+  width: 3.5rem;
+  color: var(--color-ink-muted);
+}
+
+.receipt__total-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 2px dashed var(--color-line-strong);
+  font-weight: 600;
+}
+
+.receipt__total {
+  font-size: var(--text-lg);
+  font-stretch: 112%;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .receipt {
+    padding: 2rem 1.25rem 2.25rem;
+  }
+
+  .receipt__parties {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt__lines thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .receipt__lines tbody tr {
+    display: grid;
+    grid-template-areas:
+      'product product product amount'
+      'quantity price . .';
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    column-gap: 0.35rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .receipt__lines tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .receipt__lines td {
+    padding: 0;
+  }
+
+  .receipt__lines .receipt__line-number {
+    display: none;
+  }
+
+  .receipt__lines .receipt__product {
+    grid-area: product;
+  }
+
+  .receipt__lines .receipt__amount {
+    grid-area: amount;
+    font-weight: 600;
+  }
+
+  .receipt__lines .receipt__quantity,
+  .receipt__lines .receipt__price {
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    text-align: left;
+  }
+
+  .receipt__lines .receipt__quantity {
+    grid-area: quantity;
+  }
+
+  .receipt__lines .receipt__quantity::after {
+    content: ' ×';
+  }
+
+  .receipt__lines .receipt__price {
+    grid-area: price;
+  }
+}

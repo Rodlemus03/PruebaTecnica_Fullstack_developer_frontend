@@ -1,0 +1,192 @@
+.tickets-table {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: opacity 150ms ease;
+}
+
+.tickets-table[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+.tickets-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tickets-table th {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  background: #f8faf7;
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tickets-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+
+.tickets-table tbody tr {
+  cursor: pointer;
+}
+
+.tickets-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tickets-table tbody tr:hover {
+  background: #f5f9f6;
+}
+
+.tickets-table .is-numeric {
+  text-align: right;
+}
+
+.tickets-table__code {
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.tickets-table__code:hover {
+  color: var(--color-field);
+  text-decoration: underline;
+}
+
+.tickets-table__date-cell {
+  white-space: nowrap;
+}
+
+.tickets-table__name {
+  display: block;
+}
+
+.tickets-table__muted {
+  display: block;
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+}
+
+.tickets-table__total-cell {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tickets-table__lines-label {
+  display: none;
+}
+
+.sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  color: var(--color-ink);
+}
+
+th[aria-sort='ascending'] .sort-button,
+th[aria-sort='descending'] .sort-button {
+  color: var(--color-field);
+}
+
+.sort-button__icon {
+  font-size: 0.85em;
+}
+
+@media (max-width: 720px) {
+  .tickets-table {
+    overflow: visible;
+    border: 0;
+    background: none;
+  }
+
+  .tickets-table thead tr {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tickets-table thead th {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .tickets-table thead th:not([aria-sort]) {
+    display: none;
+  }
+
+  .tickets-table tbody tr {
+    display: grid;
+    grid-template-areas:
+      'code total'
+      'supplier date'
+      'land lines';
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.2rem 1rem;
+    margin-bottom: 0.65rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .tickets-table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .tickets-table tbody tr:last-child td {
+    border: 0;
+  }
+
+  .tickets-table__code-cell {
+    grid-area: code;
+  }
+
+  .tickets-table__total-cell {
+    grid-area: total;
+  }
+
+  .tickets-table__supplier-cell {
+    grid-area: supplier;
+  }
+
+  .tickets-table__date-cell {
+    grid-area: date;
+    color: var(--color-ink-muted);
+    text-align: right;
+  }
+
+  .tickets-table__land-cell {
+    grid-area: land;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+  }
+
+  .tickets-table__lines-cell {
+    grid-area: lines;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+  }
+
+  .tickets-table__lines-label {
+    display: inline;
+  }
+}

@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router';
 import ApiStatus from './ApiStatus.jsx';
+import CatalogsProvider from './CatalogsProvider.jsx';
 import './Layout.css';
 
 function Layout() {
@@ -30,7 +31,9 @@ function Layout() {
         </div>
       </header>
       <main id="contenido" className="app-main" tabIndex={-1}>
-        <Outlet />
+        <CatalogsProvider>
+          <Outlet />
+        </CatalogsProvider>
       </main>
     </>
   );
