@@ -37,3 +37,10 @@ export function formatAmount(value) {
 
   return `${groupedInteger}.${decimalPart.padEnd(3, '0')}`;
 }
+
+export function formatMillis(millis) {
+  const integerPart = Math.floor(millis / 1000);
+  const decimalPart = String(millis % 1000).padStart(3, '0');
+
+  return formatAmount(`${integerPart}.${decimalPart}`);
+}

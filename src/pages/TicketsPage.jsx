@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 import { getTickets } from '../api/tickets.js';
 import EmptyState from '../components/EmptyState.jsx';
 import ErrorState from '../components/ErrorState.jsx';
@@ -95,7 +95,10 @@ function TicketsPage() {
           }
         />
       ) : (
-        <EmptyState title="Aún no hay tickets" text="Importa el Excel desde el backend o registra el primer ticket." />
+        <EmptyState
+          title="Aún no hay tickets"
+          text="Importa el Excel desde el backend o registra el primer ticket con el botón Nuevo ticket."
+        />
       );
     }
 
@@ -124,7 +127,19 @@ function TicketsPage() {
 
   return (
     <>
-      <PageHeader title="Tickets" description="Consulta, registra y corrige los tickets de compra a proveedores." />
+      <PageHeader
+        title="Tickets"
+        description="Consulta, registra y corrige los tickets de compra a proveedores."
+        actions={
+          <Link
+            to="/tickets/nuevo"
+            state={{ from: searchParams.size > 0 ? `?${searchParams.toString()}` : '' }}
+            className="button button--primary"
+          >
+            Nuevo ticket
+          </Link>
+        }
+      />
       <TicketFilters
         filters={filters}
         hasFilters={hasFilters}

@@ -28,3 +28,8 @@
   width: 1rem;
   height: 1rem;
 }
+
+.ticket-detail__actions {
+  display: flex;
+  gap: 0.6rem;
+}

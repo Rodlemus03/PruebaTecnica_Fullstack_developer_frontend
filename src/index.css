@@ -193,3 +193,22 @@ textarea {
   text-underline-offset: 3px;
   cursor: pointer;
 }
+
+.button--danger {
+  background: var(--color-danger);
+  color: #ffffff;
+}
+
+.button--danger:hover:not(:disabled) {
+  background: #943522;
+}
+
+.button--danger-quiet {
+  background: var(--color-surface);
+  border-color: var(--color-danger-line);
+  color: var(--color-danger);
+}
+
+.button--danger-quiet:hover:not(:disabled) {
+  background: var(--color-danger-tint);
+}
