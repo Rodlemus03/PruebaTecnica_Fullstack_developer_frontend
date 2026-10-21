@@ -44,3 +44,49 @@ export function formatMillis(millis) {
 
   return formatAmount(`${integerPart}.${decimalPart}`);
 }
+
+const dayMonthFormatter = new Intl.DateTimeFormat('es-GT', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+const dayMonthYearFormatter = new Intl.DateTimeFormat('es-GT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const shortDayMonthFormatter = new Intl.DateTimeFormat('es-GT', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const compactFormatter = new Intl.NumberFormat('es-GT', { notation: 'compact', maximumFractionDigits: 1 });
+
+export function formatDateRange(startDate, endDate) {
+  const start = toUtcDate(startDate);
+  const end = toUtcDate(endDate);
+  const endText = dayMonthYearFormatter.format(end);
+
+  if (start.getUTCFullYear() !== end.getUTCFullYear()) {
+    return `Del ${dayMonthYearFormatter.format(start)} al ${endText}`;
+  }
+
+  if (start.getUTCMonth() !== end.getUTCMonth()) {
+    return `Del ${dayMonthFormatter.format(start)} al ${endText}`;
+  }
+
+  return `Del ${start.getUTCDate()} al ${endText}`;
+}
+
+export function formatShortRange(startDate, endDate) {
+  const start = toUtcDate(startDate);
+  const end = toUtcDate(endDate);
+
+  if (start.getUTCMonth() === end.getUTCMonth()) {
+    return `${start.getUTCDate()}–${shortDayMonthFormatter.format(end)}`;
+  }
+
+  return `${shortDayMonthFormatter.format(start)} – ${shortDayMonthFormatter.format(end)}`;
+}
+
+export function formatCompact(value) {
+  return compactFormatter.format(value);
+}
+
+export function amountToMillis(value) {
+  const [integerPart, decimalPart = ''] = String(value).split('.');
+  return Number(integerPart) * 1000 + Number(decimalPart.padEnd(3, '0').slice(0, 3));
+}

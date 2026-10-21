@@ -1,0 +1,30 @@
+.payments-page__selector {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.payments-page__weeks-error {
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+}
+
+.payments-page__no-weeks {
+  color: var(--color-ink-muted);
+}
+
+.payments-page__results {
+  transition: opacity 150ms ease;
+}
+
+.payments-page__results[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .payments-page__selector {
+    padding: 1rem;
+  }
+}

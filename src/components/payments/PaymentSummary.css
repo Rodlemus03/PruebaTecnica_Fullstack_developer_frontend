@@ -1,0 +1,62 @@
+.payment-summary {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.payment-summary__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+}
+
+.payment-summary__title {
+  font-size: var(--text-lg);
+  font-stretch: 112%;
+  font-weight: 650;
+}
+
+.payment-summary__range {
+  color: var(--color-ink-muted);
+}
+
+.payment-summary__figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 2.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 2px dashed var(--color-line-strong);
+}
+
+.payment-summary__label,
+.payment-summary__stats dt {
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+}
+
+.payment-summary__amount {
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  font-stretch: 108%;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.payment-summary__stats {
+  display: flex;
+  gap: 2.25rem;
+  margin: 0;
+}
+
+.payment-summary__stats dd {
+  margin: 0.1rem 0 0;
+  font-size: var(--text-lg);
+  font-weight: 650;
+}
