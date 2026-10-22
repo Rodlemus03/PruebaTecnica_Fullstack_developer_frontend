@@ -2,6 +2,12 @@
 
 Aplicación React para gestionar los tickets de compra y revisar los pagos semanales a proveedores. Consume la API del repositorio [PruebaTecnica_Fullstack_developer_backend](https://github.com/Rodlemus03/PruebaTecnica_Fullstack_developer_backend).
 
+## Ejecución rápida
+
+Para levantar todo el sistema (base de datos, API y esta aplicación) con un solo paso, usa el repositorio del backend: `docker-compose up` con Docker, o `iniciar.bat` (Windows) e `iniciar.sh` (Linux o macOS) sin Docker. Su README lo explica.
+
+El `Dockerfile` de este repositorio construye la aplicación y la sirve con nginx; el `docker-compose.yml` del backend lo usa. La URL de la API se fija al construir con el argumento `VITE_API_URL` (por defecto `http://localhost:3000/api`).
+
 ## Requisitos
 
 - Node.js 22.22 o superior (lo exige React Router 8)
