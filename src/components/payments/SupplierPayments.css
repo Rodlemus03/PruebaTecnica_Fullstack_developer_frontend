@@ -204,7 +204,7 @@
 
 @media (max-width: 860px) {
   .breakdown {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
   }
 }
@@ -236,5 +236,11 @@
 
   .supplier-payment__panel {
     padding: 0.25rem 1rem 1rem;
+  }
+
+  .breakdown__table th,
+  .breakdown__table td {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
 }
