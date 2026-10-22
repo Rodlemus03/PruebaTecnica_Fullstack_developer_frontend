@@ -1,10 +1,13 @@
-import { Link, NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet, useLocation } from 'react-router';
 import ApiStatus from './ApiStatus.jsx';
 import CatalogsProvider from './CatalogsProvider.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 import NotificationsProvider from './NotificationsProvider.jsx';
 import './Layout.css';
 
 function Layout() {
+  const location = useLocation();
+
   return (
     <>
       <a className="skip-link" href="#contenido">
@@ -34,7 +37,9 @@ function Layout() {
       <main id="contenido" className="app-main" tabIndex={-1}>
         <NotificationsProvider>
           <CatalogsProvider>
-            <Outlet />
+            <ErrorBoundary key={location.pathname}>
+              <Outlet />
+            </ErrorBoundary>
           </CatalogsProvider>
         </NotificationsProvider>
       </main>
